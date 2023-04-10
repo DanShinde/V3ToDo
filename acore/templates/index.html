@@ -1,0 +1,30 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    <title>Django and React</title>
+  </head>
+  <body>  
+
+    <h2>Hell0o React</h2>
+    {% csrf_token %}
+    <script>
+      const URLS = {
+        list: '{% url 'list' %}',
+        todo: '{% url 'todo' 0 %}',
+      };
+      const csrf_token = document.querySelector('[name=csrfmiddlewaretoken]').value;
+      console.log(URLS);
+    </script>
+    <div id="root"></div>
+
+  <!-- bundle file with our
+      //Sort tasks
+ // const sortedTasks = tasks?.sort((a,b) => new Date(a.created_at)- new Date(a.created_at))
+
+    JavaScript application logic -->
+    
+    <script src="{% static 'index-bundle.js' %}"></script>
+</body>
+</html>
+</html>

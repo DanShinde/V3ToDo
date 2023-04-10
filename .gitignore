@@ -1,0 +1,9 @@
+# .gitignore
+/venv/
+/.venv/
+*.pyc
+**/__pycache__/
+*.sqlite3
+**/migrations/
+**/node_modules/
+**/static_root/**
