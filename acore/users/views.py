@@ -28,6 +28,7 @@ def git_update(request):
 
     subprocess.run(cmd, shell=True, cwd='/home/webpack/V3ToDo/acore')
 
+
     return HttpResponse("Updated code on PythonAnywhere")
 
 class LoginAPI(APIView):
