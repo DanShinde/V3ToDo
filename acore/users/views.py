@@ -19,14 +19,14 @@ def git_update(request):
         stored on PythonAnywhere in the git.Repo() as parameter.
         Here the name of my directory is "test.pythonanywhere.com"
         '''
-    repo = git.Repo('/home/reactTodo/WebpackDjango')
+    repo = git.Repo('/home/webpack/V3ToDo')
     origin = repo.remotes.origin
     origin.pull()
     # Run 'collectstatic' command using subprocess
     cmd = 'python manage.py collectstatic'
     cmd = 'echo "yes" | python manage.py collectstatic'
 
-    subprocess.run(cmd, shell=True, cwd='/home/reactTodo/WebpackDjango/bcore')
+    subprocess.run(cmd, shell=True, cwd='/home/webpack/V3ToDo/acore')
 
     return HttpResponse("Updated code on PythonAnywhere")
 
