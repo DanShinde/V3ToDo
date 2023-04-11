@@ -57,7 +57,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://webpack.pythonanywhere.com/",
+    "http://webpack.pythonanywhere.com",
     "http://127.0.0.1:8000",
 ]
 
