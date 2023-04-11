@@ -61,6 +61,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://localhost",
     "http://localhost:3000",
+    "http://webpack.pythonanywhere.com"
 ]
 CORS_ALLOW_METHODS = [
 'DELETE',
