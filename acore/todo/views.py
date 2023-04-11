@@ -48,6 +48,7 @@ class ToDoView(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
+        print('Failed to save todo')
         return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
     
     def delete(self, request, pk):

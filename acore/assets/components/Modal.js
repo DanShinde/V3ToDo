@@ -3,7 +3,7 @@ import axios from 'axios';
 import React from 'react';
 
 
-const Modal = ({mode, setShowModal, task})=> {
+const Modal = ({mode, setShowModal, getData, task})=> {
 
 
     const editMode = mode === 'edit' ? true : false
@@ -17,17 +17,35 @@ const Modal = ({mode, setShowModal, task})=> {
     const postData = async (e) => {
         e.preventDefault()        
         try {
-            await axios.post(`http://localhost:8000/todo/`, data, {
-                headers: {'Content-Type': 'application/json' },
+            const response = await fetch (URLS.addnew,  {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
             })
-            // Refresh tasks list after creation or update
-            setShowModal(false)
-            window.location.reload(false)
         } catch (err) {
             console.error(err)
         }
     }
     
+    const editData = async (e) => {
+        e.preventDefault()
+        const updateurl = URLS.update.replace('0', task.id)
+        console.log(updateurl)
+        try {
+            const response = await fetch(updateurl, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            })
+            if (response.status===200) {
+                setShowModal(false)
+                getData()
+            }
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
 
     const handleChange= (e)=> {
         const {name, value} = e.target
@@ -64,7 +82,7 @@ const Modal = ({mode, setShowModal, task})=> {
                     name="progress"
                     value={data.progress}
                     onChange={handleChange} />
-                    <input className={mode} type= "submit" onClick={editMode? '': postData} />
+                    <input className={mode} type= "submit" onClick={editMode? editData : postData} />
                     
                 </form>
             </div>

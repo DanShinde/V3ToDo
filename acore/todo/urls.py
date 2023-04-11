@@ -3,10 +3,12 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    # path('', views.getTodos, name = 'todo'),
-    # path('create/', views.createTodos, name = 'newTodo'),
-    # path('<int:pk>/', views.useTodo, name = 'useTodo'),
-    
-    path('<int:pk>/', views.ToDoView.as_view(), name = 'todo'),
+
+    path('<int:pk>/', views.ToDoView.as_view(), name = 'todo-detail'),
+    path('new/', views.ToDoView.as_view(), name = 'addnew'),
     path('', views.ToDoList.as_view(), name = 'list'),
+    # path('todo/<int:pk>/', ToDoView.as_view(), name='todo-detail'),
+    # path('', views.ToDoView.as_view(), name='list'),
+    path('<int:pk>/update/', views.ToDoView.as_view(), name='todo-update'),
+    path('<int:pk>/delete/', views.ToDoView.as_view(), name='todo-delete'),
 ]

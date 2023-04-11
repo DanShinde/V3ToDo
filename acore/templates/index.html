@@ -11,7 +11,10 @@
     <script>
       const URLS = {
         list: '{% url 'list' %}',
-        todo: '{% url 'todo' 0 %}',
+        todo: '{% url 'todo-detail' 0 %}',
+        addnew: '{% url 'addnew' %}',
+        update: '{% url 'todo-update' 0 %}',
+        delete: '{% url 'todo-delete' 0 %}'
       };
       const csrf_token = document.querySelector('[name=csrfmiddlewaretoken]').value;
       console.log(URLS);
