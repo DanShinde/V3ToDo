@@ -19,7 +19,6 @@ function App() {
       setTasks(json)
     } catch (err) {
       console.error(err)
-      console.log('--------------------------------------App------------------------')
     }
   }
 
