@@ -19,13 +19,25 @@ const Modal = ({mode, setShowModal, getData, task})=> {
         try {
             const response = await fetch (URLS.addnew,  {
                 method: "POST",
-                headers: { 'Content-Type': 'application/json'},
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrf_token
+                },
                 body: JSON.stringify(data)
             })
+            if (response.status === 200) {
+                console.log("ToDo Added")
+                setShowModal(false)
+                getData()
+                // TODO: handle successful response
+            } else {
+                throw new Error('Failed to create ToDo item');
+            }
         } catch (err) {
             console.error(err)
         }
     }
+    
     
     const editData = async (e) => {
         e.preventDefault()
@@ -55,7 +67,7 @@ const Modal = ({mode, setShowModal, getData, task})=> {
             [name]: value
         }))
 
-        console.log(data)
+        // console.log(data)
     }
     return (
         <div className="overlay">

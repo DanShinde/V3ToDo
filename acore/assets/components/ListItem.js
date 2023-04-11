@@ -7,7 +7,7 @@ import Modal from "./Modal";
 import React from 'react';
 
 
-const ListItem = ({task})=> {
+const ListItem = ({task, getData})=> {
     const todourl = URLS.todo.replace('0', task.id)
     const [showModal, setShowModal] = useState(false)
     const handleDelete = async () => {
@@ -37,7 +37,7 @@ const ListItem = ({task})=> {
                 {/* <Button className='delete' variant="outline" color="danger" onClick={handleDelete}>DELETE</Button> */}
                 <button className='delete' onClick={handleDelete}> <strong>DELETE</strong></button>
             </div>
-            {showModal && <Modal mode={'edit'} setShowModal={setShowModal} task={task} />}
+            {showModal && <Modal mode={'edit'} setShowModal={setShowModal} getData={getData} task={task} />}
         </li>
     )
 }

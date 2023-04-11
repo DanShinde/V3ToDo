@@ -14,7 +14,6 @@ function App() {
   const getData = async () =>{
     try {
       const response = await axios.get(list)       //('https://reacttodo.pythonanywhere.com/')    
-      console.log('--------------------------------------Update------------------------')
       const json = await response.data
       setTasks(json)
     } catch (err) {
@@ -28,8 +27,8 @@ function App() {
 
   return (
     <div className="App">
-      <ListHeader listName={' 🚀 Holiday TickList'} />
-      {tasks?.map((task) => <ListItem key={task.id} task={task} />)}
+      <ListHeader listName={' 🚀 Holiday TickList'} getData={getData} />
+      {tasks?.map((task) => <ListItem key={task.id} task={task} getData={getData} />)}
 
     </div>
   );
