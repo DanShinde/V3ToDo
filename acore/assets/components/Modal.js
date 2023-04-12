@@ -46,7 +46,10 @@ const Modal = ({mode, setShowModal, getData, task})=> {
         try {
             const response = await fetch(updateurl, {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json'},
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrf_token
+                },
                 body: JSON.stringify(data)
             })
             if (response.status===200) {

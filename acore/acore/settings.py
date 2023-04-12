@@ -55,14 +55,20 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "corsheaders.middleware.CorsMiddleware",
 ]
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
 CORS_ALLOWED_ORIGINS = [
     "http://webpack.pythonanywhere.com",
     "http://localhost:8000",
     "http://localhost",
     "http://localhost:3000",
-    "http://webpack.pythonanywhere.com"
-]
+    "http://127.0.0.1",
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1:3000",
+    "http://localhost:8080"
+    ]
+
+
 CORS_ALLOW_METHODS = [
 'DELETE',
 'GET',
